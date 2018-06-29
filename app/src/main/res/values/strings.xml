@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Inventory App</string>
     <string name="action_delete_all_entries">Delete All Products</string>
-    <string name="empty_view_title_text">Insert your products...</string>
+    <string name="empty_view_title_text">Insert your products. Press the button on the bottom of the screen to get started</string>
     <string name="editor_activity_title_new_product">Add a Product</string>
     <string name="editor_activity_title_edit_product">Edit Product</string>
     <string name="action_save">Save</string>
@@ -23,7 +23,6 @@
     <string name="supplier_name">Supplier Name</string>
     <string name="supplier_phone_number">Phone Number</string>
     <string name="hint_product_name">Name</string>
-    <string name="hint_quantity_product">Quantity</string>
     <string name="hint_product_price">Price</string>
     <string name="hint_phone_number">Phone number</string>
     <string name="product_price">Price</string>

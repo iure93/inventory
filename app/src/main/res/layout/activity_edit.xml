@@ -27,8 +27,8 @@
             android:id="@+id/edit_product_name"
             style="@style/EditorFieldStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:hint="@string/hint_product_name"
             android:inputType="textCapWords" />
     </LinearLayout>
@@ -67,18 +67,18 @@
         <TextView
             style="@style/CategoryStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:text="@string/supplier_name" />
 
         <!-- Supplier name field -->
 
         <EditText
             android:id="@+id/edit_supplier_name"
-            style="@style/CategoryStyle"
+            style="@style/EditorFieldStyle"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:hint="@string/supplier_name" />
     </LinearLayout>
 
@@ -91,6 +91,7 @@
         <TextView
             style="@style/CategoryStyle"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/supplier_phone_number" />
 
@@ -99,6 +100,7 @@
             android:id="@+id/edit_supplier_phone_number"
             style="@style/EditorFieldStyle"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="@string/hint_phone_number"
             android:inputType="number" />
@@ -107,6 +109,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
         android:orientation="horizontal">
 
         <Button
@@ -123,8 +126,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:hint="@string/hint_quantity_product"
-            android:inputType="number" />
+            android:gravity="center"
+            android:inputType="number"
+            android:text="0" />
 
         <Button
             android:id="@+id/edit_plus"
@@ -139,5 +143,7 @@
         android:id="@+id/delete_product_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
         android:text="DELETE" />
 </LinearLayout>

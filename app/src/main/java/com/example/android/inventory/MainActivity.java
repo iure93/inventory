@@ -17,11 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.inventory.data.ProductContract;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,ProductCursorAdapter.OnSaleButtonClickListener {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, ProductCursorAdapter.OnSaleButtonClickListener {
     private static final int LOADER_ID = 0;
     private Uri uri = ProductContract.ProductEntry.CONTENT_URI;
     ProductCursorAdapter mProductCursorAdapter;
@@ -34,22 +35,20 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ListView productList = (ListView) findViewById(R.id.list);
 
         // Find and set empty view on the ListView, so that it only shows when the list has 0 items.
-        View emptyView =findViewById(R.id.empty_title_text);
+        TextView emptyView = findViewById(R.id.empty_title_text);
         productList.setEmptyView(emptyView);
 
         // Setup an Adapter to create a list item for each row of products data in the Cursor.
         // There is no product data yet (until the loader finishes) so pass in null for the Cursor.
-        mProductCursorAdapter = new ProductCursorAdapter(this,null);
+        mProductCursorAdapter = new ProductCursorAdapter(this, null);
         productList.setAdapter(mProductCursorAdapter);
-        getLoaderManager().initLoader(LOADER_ID,null,this);
-
-
+        getLoaderManager().initLoader(LOADER_ID, null, this);
 
         FloatingActionButton floatingActionButton = findViewById(R.id.float_button);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,EditActivity.class);
+                Intent intent = new Intent(MainActivity.this, EditActivity.class);
                 startActivity(intent);
             }
         });
@@ -57,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this,DetailActivity.class);
-                Uri uriForDetail = ContentUris.withAppendedId(uri,id);
+                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                Uri uriForDetail = ContentUris.withAppendedId(uri, id);
                 intent.setData(uriForDetail);
                 startActivity(intent);
             }
@@ -69,13 +68,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
         //projection must include column_id because cursor needs id to function properly
-        String[] projection = new String[]{ProductContract.ProductEntry.TABLE_COLUMN_ID,
-                ProductContract.ProductEntry.TABLE_COLUMN_NAME,
-                ProductContract.ProductEntry.TABLE_COLUMN_PRICE,
-                ProductContract.ProductEntry.TABLE_COLUMN_QUANTITY};
-        switch (id){
+        String[] projection = new String[]{ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_ID,
+                ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_NAME,
+                ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_PRICE,
+                ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_QUANTITY};
+        switch (id) {
             case LOADER_ID:
-                return new CursorLoader(this,uri,projection,null,null,null);
+                return new CursorLoader(this, uri, projection, null, null, null);
             default:
                 return null;
         }
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
-            mProductCursorAdapter.swapCursor(data);
+        mProductCursorAdapter.swapCursor(data);
     }
 
     @Override
@@ -93,19 +92,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onSaleButtonClick(int rowId) {
-        Uri uriToUpdate = ContentUris.withAppendedId(uri,rowId);
-        String[] projection = new String[]{ProductContract.ProductEntry.TABLE_COLUMN_QUANTITY};
-        Cursor cursor = getContentResolver().query(uriToUpdate,projection,null,null,null);
-        if (cursor.moveToFirst()){
-            int quantity = cursor.getInt(cursor.getColumnIndex(ProductContract.ProductEntry.TABLE_COLUMN_QUANTITY));
-            if (quantity > 0){
-                quantity -=1;
-            }else{
-                Toast.makeText(this,getString(R.string.quantity_sold_out_msg),Toast.LENGTH_SHORT).show();
+        Uri uriToUpdate = ContentUris.withAppendedId(uri, rowId);
+        String[] projection = new String[]{ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_QUANTITY};
+        Cursor cursor = getContentResolver().query(uriToUpdate, projection, null, null, null);
+        if (cursor.moveToFirst()) {
+            int quantity = cursor.getInt(cursor.getColumnIndex(ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_QUANTITY));
+            if (quantity > 0) {
+                quantity -= 1;
+            } else {
+                Toast.makeText(this, getString(R.string.quantity_sold_out_msg), Toast.LENGTH_SHORT).show();
             }
             ContentValues values = new ContentValues();
-            values.put(ProductContract.ProductEntry.TABLE_COLUMN_QUANTITY,quantity);
-            getContentResolver().update(uriToUpdate,values,null,null);
+            values.put(ProductContract.ProductEntry.PRODUCT_TABLE_COLUMN_QUANTITY, quantity);
+            getContentResolver().update(uriToUpdate, values, null, null);
         }
     }
 
@@ -128,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
         return super.onOptionsItemSelected(item);
     }
-
 
     /**
      * Helper method to delete all pets in the database.

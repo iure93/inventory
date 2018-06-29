@@ -32,7 +32,6 @@
             android:layout_weight="1"
             android:inputType="textCapWords"
             android:text="product" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -85,8 +84,6 @@
             android:layout_weight="1"
             android:inputType="number"
             android:text="quantity" />
-
-
     </LinearLayout>
 
     <LinearLayout
@@ -108,7 +105,7 @@
 
         <TextView
             android:id="@+id/detail_supplier_name"
-            style="@style/CategoryStyle"
+            style="@style/EditorFieldStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -149,6 +146,4 @@
         android:layout_gravity="center"
         android:layout_margin="24dp"
         android:text="PHONE SUPPLIER" />
-
-
 </LinearLayout>
