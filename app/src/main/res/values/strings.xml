@@ -3,22 +3,6 @@
     <string name="app_name">Inventory App</string>
     <string name="action_delete_all_entries">Delete All Products</string>
     <string name="empty_view_title_text">Insert your products. Press the button on the bottom of the screen to get started</string>
-    <string name="editor_activity_title_new_product">Add a Product</string>
-    <string name="editor_activity_title_edit_product">Edit Product</string>
-    <string name="action_save">Save</string>
-    <string name="action_delete">Delete</string>
-    <string name="editor_insert_product_successful">Product saved</string>
-    <string name="editor_insert_product_failed">Error with saving product</string>
-    <string name="editor_update_product_successful">Product updated</string>
-    <string name="editor_update_product_failed">Error with updating product</string>
-    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
-    <string name="discard">Discard</string>
-    <string name="keep_editing">Keep Editing</string>
-    <string name="editor_delete_product_successful">Product deleted</string>
-    <string name="editor_delete_product_failed">Error with deleting product</string>
-    <string name="delete_dialog_msg">Delete this product?</string>
-    <string name="delete">Delete</string>
-    <string name="cancel">Cancel</string>
     <string name="product_name">Product Name</string>
     <string name="supplier_name">Supplier Name</string>
     <string name="supplier_phone_number">Phone Number</string>
@@ -39,11 +23,5 @@
     <string name="delete_message">Do you want to delete the product?</string>
     <string name="delete_successful_msg">Product deleted</string>
     <string name="delete_unsuccessful_msg">Unable to delete product</string>
-    <string name="name_required">Name required</string>
-    <string name="price_required">Price Required</string>
-    <string name="supplier_required">Supplier name required</string>
-    <string name="phone_required">Phone number required</string>
-    <string name="quantity_required">Quantity required</string>
     <string name="quantity_sold_out_msg">Sold out</string>
-    <string name="delete_action_title">Delete</string>
 </resources>
